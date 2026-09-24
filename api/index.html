@@ -1,0 +1,2715 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="SIMD-accelerated state-vector quantum circuit simulator for MIMIQ">
+      
+      
+      
+        <link rel="canonical" href="https://docs.qperfect.io/exaqt-python/api/">
+      
+      
+        <link rel="prev" href="../qiskit/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>API Reference - MIMIQ Exaqt</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/qperfect.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MIMIQ Exaqt" class="md-header__button md-logo" aria-label="MIMIQ Exaqt" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MIMIQ Exaqt
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MIMIQ Exaqt" class="md-nav__button md-logo" aria-label="MIMIQ Exaqt" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MIMIQ Exaqt
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../execute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Circuit Execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qiskit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qiskit Interoperability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#state-vector-exaqtsv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State vector — ExaqtSV
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulator-exaqtqcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simulator — ExaqtQCS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulator — ExaqtQCS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExaqtQCS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExaqtQCS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.evolvezerostate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        evolvezerostate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.evolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        evolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.compile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        compile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.expectation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        expectation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        capabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-simulator-exaqtsvgpu-exaqtqcsgpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU simulator — ExaqtSVGpu / ExaqtQCSGpu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composite-state-exaqtstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Composite state — ExaqtState
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Composite state — ExaqtState">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExaqtState
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExaqtState">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zero
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        one
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        product
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.amplitude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        amplitude
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sample
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-instruction-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-instruction primitives
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Per-instruction primitives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.evolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        evolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.apply_instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        apply_instruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilation-passes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compilation passes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compilation passes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtFlattenContainersPass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExaqtFlattenContainersPass
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExaqtFlattenContainersPass">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtFlattenContainersPass.spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtFlattenContainersPass.preserves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preserves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtFlattenContainersPass.apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtReorderQubitsPass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExaqtReorderQubitsPass
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExaqtReorderQubitsPass">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtReorderQubitsPass--parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtReorderQubitsPass.spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtReorderQubitsPass.preserves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preserves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtReorderQubitsPass.apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random-number-generator-rng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Random number generator — Rng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Package metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.docs_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        docs_dir
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exceptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#state-vector-exaqtsv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State vector — ExaqtSV
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulator-exaqtqcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simulator — ExaqtQCS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulator — ExaqtQCS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExaqtQCS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExaqtQCS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.evolvezerostate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        evolvezerostate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.evolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        evolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.compile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        compile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.expectation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        expectation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtQCS.capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        capabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-simulator-exaqtsvgpu-exaqtqcsgpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU simulator — ExaqtSVGpu / ExaqtQCSGpu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composite-state-exaqtstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Composite state — ExaqtState
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Composite state — ExaqtState">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExaqtState
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExaqtState">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zero
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        one
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        product
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.amplitude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        amplitude
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sample
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtState.reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-instruction-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-instruction primitives
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Per-instruction primitives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.evolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        evolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.apply_instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        apply_instruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compilation-passes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compilation passes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compilation passes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtFlattenContainersPass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExaqtFlattenContainersPass
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExaqtFlattenContainersPass">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtFlattenContainersPass.spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtFlattenContainersPass.preserves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preserves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtFlattenContainersPass.apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtReorderQubitsPass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExaqtReorderQubitsPass
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExaqtReorderQubitsPass">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtReorderQubitsPass--parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtReorderQubitsPass.spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtReorderQubitsPass.preserves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preserves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.ExaqtReorderQubitsPass.apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random-number-generator-rng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Random number generator — Rng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Package metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exaqt.docs_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        docs_dir
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exceptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h1>
+<p>For a guided tour see <a href="../getting-started/">Getting Started</a> and
+<a href="../execute/">Circuit Execution</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Gate / operator matrix inputs</p>
+<p>Methods that take a 1- or 2-qubit gate or operator (<code>apply_gate_1q</code>,
+<code>apply_gate_2q</code>, <code>expectation_1q</code>, <code>expectation_2q</code>, <code>apply_kraus_*</code>,
+<code>apply_mixed_unitary_*</code>) expect a numpy <code>complex128</code> array: a <code>(2, 2)</code>
+array for a 1-qubit gate, a <code>(4, 4)</code> array for a 2-qubit gate, and a
+<code>(n_ops, dim, dim)</code> stack for a set of Kraus / mixed-unitary operators.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Qubit / bitstring ordering</p>
+<p>Exaqt is <strong>little-endian by qubit index</strong>: qubit 0 is the
+least-significant bit of the amplitude index, so <code>bs[0]</code> is qubit 0.
+This matches Qiskit's little-endian ordering and MimiqCircuitsBase,
+the Julia implementation.</p>
+</div>
+<h2 id="state-vector-exaqtsv">State vector — <code>ExaqtSV</code><a class="headerlink" href="#state-vector-exaqtsv" title="Permanent link">&para;</a></h2>
+<p>The dense quantum register. Amplitudes are <code>complex128</code>, indexed
+little-endian (qubit 0 = LSB).</p>
+<p><strong>Constructors:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ExaqtSV.zero(num_qubits)</code></td>
+<td><code>\|0...0&gt;</code> state on <code>num_qubits</code> qubits</td>
+</tr>
+<tr>
+<td><code>ExaqtSV.from_bitstring(bits)</code></td>
+<td>Product state from a 0/1 sequence (qubit 0 = LSB)</td>
+</tr>
+<tr>
+<td><code>ExaqtSV.from_amplitudes(num_qubits, arr)</code></td>
+<td>State from a <code>complex128</code> amplitude array</td>
+</tr>
+</tbody>
+</table>
+<p>There is no fixed cap on <code>num_qubits</code>. Host memory is what binds — an
+amplitude is 16 bytes, so a 30-qubit state is 16 GiB — and that limit is
+reported rather than predicted: <code>zero</code> raises <code>MemoryError</code> when the
+buffer cannot be reserved. The only absolute bound is arithmetic, at 60
+qubits on a 64-bit host (16 TiB), which no machine approaches.</p>
+<p><strong>Properties &amp; inspection:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sv.num_qubits</code></td>
+<td><code>int</code> — number of qubits</td>
+</tr>
+<tr>
+<td><code>sv.len</code> / <code>len(sv)</code></td>
+<td><code>int</code> — number of amplitudes, <code>2**num_qubits</code></td>
+</tr>
+<tr>
+<td><code>sv.get(idx)</code></td>
+<td><code>complex</code> — amplitude of basis state <code>idx</code></td>
+</tr>
+<tr>
+<td><code>sv.probability(idx)</code></td>
+<td><code>float</code> — probability of basis state <code>idx</code></td>
+</tr>
+<tr>
+<td><code>sv.amplitudes()</code></td>
+<td><code>complex128</code> numpy array of all amplitudes</td>
+</tr>
+<tr>
+<td><code>sv.norm_squared()</code></td>
+<td><code>float</code> — squared norm</td>
+</tr>
+<tr>
+<td><code>sv.normalize()</code></td>
+<td><code>float</code> — norm before normalising; renormalises in place</td>
+</tr>
+<tr>
+<td><code>sv.reset_to_zero()</code></td>
+<td>Reset to <code>\|0...0&gt;</code> in place</td>
+</tr>
+<tr>
+<td><code>sv.clone()</code></td>
+<td>Deep copy</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Single-qubit gates</strong> (target qubit last, angles first):</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sv.apply_x/y/z(target)</code></td>
+<td>Pauli gates</td>
+</tr>
+<tr>
+<td><code>sv.apply_h(target)</code></td>
+<td>Hadamard</td>
+</tr>
+<tr>
+<td><code>sv.apply_s/sdg/t/tdg/sx(target)</code></td>
+<td>Phase / T / SX gates</td>
+</tr>
+<tr>
+<td><code>sv.apply_p(lmbda, target)</code></td>
+<td>Phase gate <code>P(lambda)</code></td>
+</tr>
+<tr>
+<td><code>sv.apply_rx/ry/rz(angle, target)</code></td>
+<td>Rotation gates</td>
+</tr>
+<tr>
+<td><code>sv.apply_u(theta, phi, lmbda, target)</code></td>
+<td>General <code>U</code> gate</td>
+</tr>
+<tr>
+<td><code>sv.apply_gate_1q(gate, target)</code></td>
+<td>Arbitrary 1-qubit unitary, <code>(2, 2)</code> <code>complex128</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Two-qubit gates:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sv.apply_cx/cy/cz(a, b)</code></td>
+<td>Controlled Pauli gates</td>
+</tr>
+<tr>
+<td><code>sv.apply_swap/iswap(q1, q2)</code></td>
+<td>(i)SWAP</td>
+</tr>
+<tr>
+<td><code>sv.apply_cp(lmbda, q1, q2)</code></td>
+<td>Controlled phase</td>
+</tr>
+<tr>
+<td><code>sv.apply_crx/cry/crz(angle, control, target)</code></td>
+<td>Controlled rotations</td>
+</tr>
+<tr>
+<td><code>sv.apply_rxx/ryy/rzz(theta, q1, q2)</code></td>
+<td>Two-qubit rotations</td>
+</tr>
+<tr>
+<td><code>sv.apply_gate_2q(gate, q1, q2)</code></td>
+<td>Arbitrary 2-qubit unitary, <code>(4, 4)</code> <code>complex128</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Multi-controlled gates:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sv.apply_mcx(controls, target)</code></td>
+<td>Multi-controlled X</td>
+</tr>
+<tr>
+<td><code>sv.apply_controlled_gate_1q(gate, controls, target)</code></td>
+<td>Controlled 1-qubit unitary</td>
+</tr>
+<tr>
+<td><code>sv.apply_controlled_gate_2q(gate, controls, q1, q2)</code></td>
+<td>Controlled 2-qubit unitary</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Measurement &amp; sampling</strong> (all take a seeded <code>Rng</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sv.prob_zero(target)</code></td>
+<td><code>float</code> — probability of measuring <code>0</code> on <code>target</code></td>
+</tr>
+<tr>
+<td><code>sv.measure_qubit(target, rng)</code></td>
+<td><code>int</code> — outcome, collapses the state</td>
+</tr>
+<tr>
+<td><code>sv.reset_qubit(target, rng)</code></td>
+<td><code>int</code> — pre-reset outcome, resets qubit to <code>\|0&gt;</code></td>
+</tr>
+<tr>
+<td><code>sv.sample_bitstring(rng)</code></td>
+<td><code>uint8</code> array — one sampled bitstring</td>
+</tr>
+<tr>
+<td><code>sv.sample(rng, nsamples)</code></td>
+<td><code>(nsamples, num_qubits)</code> <code>uint8</code> array</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Noise channels</strong> (each takes a seeded <code>Rng</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sv.apply_kraus_1q(kraus_ops, target, rng)</code></td>
+<td>1-qubit Kraus channel, <code>(n_ops, 2, 2)</code></td>
+</tr>
+<tr>
+<td><code>sv.apply_kraus_2q(kraus_ops, q1, q2, rng)</code></td>
+<td>2-qubit Kraus channel, <code>(n_ops, 4, 4)</code></td>
+</tr>
+<tr>
+<td><code>sv.apply_mixed_unitary_1q(unitaries, probs, target, rng)</code></td>
+<td>1-qubit mixed-unitary channel</td>
+</tr>
+<tr>
+<td><code>sv.apply_mixed_unitary_2q(unitaries, probs, q1, q2, rng)</code></td>
+<td>2-qubit mixed-unitary channel</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Expectation values:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sv.expectation_1q(op, target)</code></td>
+<td><code>complex</code> — <code>&lt;psi\|O\|psi&gt;</code> for a <code>(2, 2)</code> operator</td>
+</tr>
+<tr>
+<td><code>sv.expectation_2q(op, q1, q2)</code></td>
+<td><code>complex</code> — <code>&lt;psi\|O\|psi&gt;</code> for a <code>(4, 4)</code> operator</td>
+</tr>
+<tr>
+<td><code>sv.expectation_pauli(paulis, qubits)</code></td>
+<td><code>complex</code> — expectation of a Pauli string (e.g. <code>"ZZZ"</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="simulator-exaqtqcs">Simulator — <code>ExaqtQCS</code><a class="headerlink" href="#simulator-exaqtqcs" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="exaqt.ExaqtQCS" class="doc doc-heading">
+            <code>exaqt.ExaqtQCS</code>
+
+
+<a href="#exaqt.ExaqtQCS" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="mimiqcircuits.backends.LocalBackend">LocalBackend</span></code></p>
+
+
+
+        <p>State-vector quantum circuit simulator.</p>
+<p>Subclasses :class:<code>mimiqcircuits.backends.LocalBackend</code> and
+declares the Julia <code>ExaqtQCS</code> capability set plus
+<code>parametric</code> (Python-only — supported through the inherited
+slow-path :meth:<code>bind</code>; the Julia wrapper omits the token).</p>
+<p>Parametric circuits are supported via the inherited slow-path
+:meth:<code>bind</code> (substitute then re-compile); there is no native
+compile-once / bind-many fast path yet.</p>
+<p>Pauli-string expectations on any number of qubits are supported:
+<code>ExpectationValue(PauliString("XYZ..."))</code> dispatches to the
+native mask-based <code>expectation_pauli</code> (cost <code>O(2^n)</code> in the
+state size, independent of the string length). Only expectations
+of <em>non-Pauli</em> operators (e.g. a <code>GateCustom</code> matrix, or a
+Control/Power/Inverse-wrapped Pauli) keep the dense two-qubit cap.</p>
+<p>Caveat — noise + :class:<code>ExactFidelity</code>: <code>_apply_kraus</code>
+renormalises the state after sampling a Kraus branch, so the
+per-shot fidelity is always 1.0 and the typed wrap is
+:class:<code>ExactFidelity</code>. That is honest for trace-preserving
+channels (the sampled trajectory is exact under renormalisation).
+For non-trace-preserving channels (e.g. amplitude damping with
+explicit loss) the surviving-trajectory probability is not
+tracked, and :class:<code>ExactFidelity</code> over-states reliability.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="exaqt.ExaqtQCS.seed">seed</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>instance-level RNG seed. <code>None</code> means "fresh entropy
+on every :meth:<code>execute</code>". An integer makes the instance
+reproducible. Per-call <code>seed=</code> / <code>rng=</code> (mutually
+exclusive) overrides the instance value.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="exaqt.ExaqtQCS.reorderqubits">reorderqubits</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>qubit-reordering policy for the default pipeline
+(:meth:<code>default_passes</code>). <code>None</code> (the default) reorders
+automatically once a circuit is wide enough to benefit
+(&gt;= 13 qubits); <code>False</code> never reorders; <code>True</code> /
+<code>"greedy"</code> / <code>"sa"</code> always reorders with that method.
+Exaqt relabels qubits to land gates on the fastest
+SIMD kernels — the state-vector analogue of the
+distance-based <code>reorderqubits</code> used by tensor-network
+backends. Instance-only (the local backend has no
+<code>execute(..., reorderqubits=)</code> knob); for finer control
+pass a :class:<code>~exaqt.ExaqtReorderQubitsPass</code> via
+<code>execute(..., passes=)</code>.</p>
+<p>Ignored entirely when <code>dynamic_qubits=True</code> — dynamic
+allocation assigns physical slots in first-touch order, so no
+relabelling survives to affect throughput. Setting both raises
+a :class:<code>RuntimeWarning</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="exaqt.ExaqtQCS.dynamic_qubits">dynamic_qubits</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>whether to size the amplitude buffer to the
+<em>live</em> qubits instead of reserving the full <code>2**num_qubits</code>
+up front. Default <code>False</code> (reserve everything).</p>
+<p><code>True</code> enables <strong>dynamic qubit allocation</strong>: the buffer is
+sized to the <em>live</em> qubits instead. Each is allocated on first
+use, and every <code>Reset</code> / <code>MeasureReset</code> releases its qubit,
+<strong>halving the buffer</strong>. Truncation is exact — a reset qubit is
+|0⟩ and hence unentangled, so the discarded half is all zeros.
+(What stops being unitary at runtime is <code>Reset</code> itself, not
+this optimisation.)</p>
+<p>Because the kernels are DRAM-bandwidth-bound past ~20 qubits,
+where the number of sweeps is what costs, releasing <code>k</code>
+ancillas makes every later gate <code>2**k</code> times cheaper — plus a
+further jump if the state drops back into cache. Worth it for
+circuits that measure ancillas out partway through (iterative
+phase estimation, arithmetic, distillation). No benefit, and a
+negligible per-gate mapping cost, for circuits that never reset.</p>
+<p>Qubit indices stay in your own numbering; <code>num_qubits</code> keeps
+reporting the declared width while
+:attr:<code>~exaqt.ExaqtState.live_qubits</code> reports the
+physical one. If the full <code>2**num_qubits</code> cannot be reserved,
+state construction <strong>fails</strong> rather than falling back to a
+smaller state vector.</p>
+<p>Note that <code>randstate</code> is always fully allocated (a random
+full-support state has nothing to gain), so resets on one will
+not shrink the buffer.</p>
+<p>Setting this to <code>False</code> also <strong>disables the qubit-reordering
+pass</strong> (see :attr:<code>reorderqubits</code> and :meth:<code>default_passes</code>):
+first-touch slot assignment overrides the relabelling, so the
+search costs time and buys nothing. The two optimisations want
+opposite slot assignments — reordering wants <em>busy</em> qubits in
+high slots, releasing wants <em>dying</em> ones there — so they need
+one merged cost model rather than two stacked passes. Fusion is
+unaffected and still applies.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <p>Examples:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; import mimiqcircuits as mc
+&gt;&gt;&gt; from exaqt import ExaqtQCS
+&gt;&gt;&gt; sim = ExaqtQCS()
+&gt;&gt;&gt; c = mc.Circuit()
+&gt;&gt;&gt; c.push(mc.GateH(), 0)
+...
+&gt;&gt;&gt; c.push(mc.GateCX(), 0, 1)
+...
+&gt;&gt;&gt; c.push(mc.Measure(), 0, 0)
+...
+&gt;&gt;&gt; c.push(mc.Measure(), 1, 1)
+...
+&gt;&gt;&gt; results = sim.execute(c, nsamples=1000)
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtQCS.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reorderqubits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dynamic_qubits</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtQCS.__init__" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtQCS.execute" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">execute</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_qubits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">passes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">strict_pass_order</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stopped</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtQCS.execute" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Execute a circuit and return :class:<code>mimiqcircuits.QCSResults</code>.</p>
+<p><code>seed</code> and <code>rng</code> are mutually exclusive entropy sources;
+pass at most one. With neither, the simulator's instance
+<code>seed</code> (set at construction) is used, falling back to fresh
+OS entropy. Amplitudes are requested via in-circuit
+:class:<code>Amplitude</code> ops that write into <code>results.zstates</code>.</p>
+<p>With no <code>passes</code>, :meth:<code>default_passes</code> runs — gate fusion
+above a cache-derived qubit threshold, then qubit reordering per
+the <code>reorderqubits</code> constructor option. Pass
+<code>passes=PassPipeline()</code> to disable both or a custom pipeline to
+retune them.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtQCS.evolvezerostate" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">evolvezerostate</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtQCS.evolvezerostate" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Evolve the zero state through <code>circuit</code>; return
+<code>(state, fidelity)</code> with a plain <code>float</code> fidelity (always
+<code>1.0</code> for Exaqt's renormalising path).</p>
+<p>Convenience: matches the engines-side <code>SimulatorState.zero(...)
++ evolve(state, c, rng=...)</code> two-step. The dual-shape
+:meth:<code>evolve</code> covers the more general case where the caller
+owns the state.</p>
+<p>Seed resolution mirrors :meth:<code>execute</code>: call-site <code>seed=</code> →
+instance <code>self.seed</code> → fresh cryptographic entropy from
+:mod:<code>secrets</code>.</p>
+<p>For circuits with Kraus channels or mid-circuit measurements
+this is a <strong>single</strong> stochastic trajectory; use :meth:<code>execute</code>
+for ensemble statistics.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtQCS.evolve" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">evolve</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">compiled</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stopped</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtQCS.evolve" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Evolve <code>state</code> under <code>compiled</code>. Returns
+<code>(state, ExactFidelity)</code> — state-vector evolution is exact
+per trajectory, so no truncation bound is reported.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtQCS.compile" class="doc doc-heading">
+            <code class="highlight language-python"><span class="nb">compile</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtQCS.compile" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Identity-wrap the circuit.</p>
+<p>NOTE: Exaqt dispatches every supported gate natively, so
+no Julia-side <code>convertcircuit</code> impurity applies here (cf. the
+engines wrappers). The wrap is a pure identity over the circuit.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtQCS.expectation" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">expectation</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="o">*</span><span class="n">qubits</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtQCS.expectation" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute <code>⟨ψ|op|ψ⟩</code> on <code>state</code> without mutating it.</p>
+<p>Supports 1- and 2-qubit operators. <code>qubits</code> is the list of
+qubit indices <code>op</code> acts on (0-based, matching the rest of
+the Python API).</p>
+<p>Raises :class:<code>ValueError</code> for any other operator size.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtQCS.capabilities" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">capabilities</span><span class="p">()</span></code>
+
+<a href="#exaqt.ExaqtQCS.capabilities" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><hr />
+<h2 id="gpu-simulator-exaqtsvgpu-exaqtqcsgpu">GPU simulator — <code>ExaqtSVGpu</code> / <code>ExaqtQCSGpu</code><a class="headerlink" href="#gpu-simulator-exaqtsvgpu-exaqtqcsgpu" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Off by default</p>
+<p>GPU support is a <strong>build-time</strong> opt-in. A stock wheel does not carry it:
+the extension must be built with the <code>gpu</code> cargo feature
+(<code>maturin develop --release --features gpu</code>) on a host with a CUDA
+toolkit and a cuQuantum SDK (<code>$CUQUANTUM_ROOT</code>). Probe at runtime with
+<code>exaqt.gpu_available()</code> — <code>ExaqtSVGpu</code>, <code>ExaqtQCSGpu</code>, <code>CudaError</code> and
+<code>CudaUnavailableError</code> only exist when it returns <code>True</code>.</p>
+<p>These members are documented by hand rather than generated, precisely
+because they are absent from a CPU-only build.</p>
+</div>
+<p><code>ExaqtSVGpu</code> is a state vector living in device memory, backed by NVIDIA's
+cuStateVec. Every method it has is named and shaped exactly like its
+<code>ExaqtSV</code> counterpart — same gate set, same little-endian qubit order, same
+column-major matrix convention — and <code>ExaqtQCSGpu</code> advertises the same
+capability set as <code>ExaqtQCS</code>. Any circuit that runs on one runs on the other.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">exaqt</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">if</span> <span class="n">exaqt</span><span class="o">.</span><span class="n">gpu_available</span><span class="p">():</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">results</span> <span class="o">=</span> <span class="n">exaqt</span><span class="o">.</span><span class="n">ExaqtQCSGpu</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Reproducible across backends.</strong> Every stochastic operation — measurement,
+reset, sampling, Kraus and mixed-unitary branch selection — draws from the
+same seeded Xoshiro256++ stream in the same order and count as the CPU core.
+So <code>ExaqtQCSGpu(seed=n)</code> and <code>ExaqtQCS(seed=n)</code> follow the same trajectory,
+and a run can be reproduced on a laptop without a GPU.</p>
+<p>The one place exact agreement is not guaranteed by construction is <code>sample</code>:
+cuStateVec searches its own cumulative array, so an exact tie between two
+basis states can in principle resolve differently in the last bit. The
+distribution is identical either way.</p>
+<p><strong>How wide a state may be.</strong> There is no fixed qubit cap — the card's
+free memory decides, and <code>ExaqtSVGpu.max_qubits_on_device()</code> reports it:
+the widest state the current device will hold right now, <code>0</code> if not even
+one qubit fits.</p>
+<p>The constructors check the same thing before allocating. A state is
+<code>2**n * 16</code> bytes, so 30 qubits needs 16 GiB and fits a 24 GB card, while
+an 80 GB card reaches 32. A request the device has no room for raises
+<code>MemoryError</code> naming the byte counts, rather than a bare CUDA status.</p>
+<p>The figure is a snapshot, not a constant — memory held by an existing
+state, or by another process on the same card, lowers it. Reading it also
+creates and destroys a CUDA context, so it measures the device as a
+constructor leaves it; that makes it a capability query rather than
+something to call in a loop.</p>
+<p>Nothing is padded onto the measurement. A margin would be a guess, and a
+guess in that direction refuses states that would have run; the marginal
+case is left to <code>cudaMalloc</code>, which reports rather than crashing.</p>
+<p>The minimum is 1 qubit, unlike <code>ExaqtSV</code>: cuStateVec has no 0-qubit state.</p>
+<p><strong>Three shape differences from <code>ExaqtSV</code>:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sv.synchronize()</code></td>
+<td>GPU-only. Block until queued kernels finish — gate calls only <em>enqueue</em> work, so any timing loop needs this.</td>
+</tr>
+<tr>
+<td><code>sv.set_amplitude(idx, value)</code></td>
+<td>GPU-only. Overwrite one amplitude in place (no re-normalisation).</td>
+</tr>
+<tr>
+<td><code>sv.clone()</code></td>
+<td>Can raise <code>CudaError</code>. Device memory is scarcer than host memory, so a failed allocation reports rather than aborting.</td>
+</tr>
+</tbody>
+</table>
+<p><code>sv.amplitudes()</code> exists but copies the whole buffer back to the host — 16
+bytes per amplitude, so 4 GiB at 28 qubits. Prefer <code>sv.get(idx)</code>.</p>
+<p><code>expectation_pauli</code> returns a value whose imaginary part is exactly zero,
+where the CPU version carries floating-point noise of order 1e-16: cuStateVec
+computes a Pauli product's expectation as a real number. Compare with a
+tolerance, not for equality.</p>
+<p><strong>Differences in <code>ExaqtQCSGpu</code>'s default pipeline.</strong> Fusion runs at <em>every</em>
+circuit size, with no cache-derived qubit threshold: on a GPU a fused block
+costs one pass over the state whatever its width, so fusing <em>n</em> gates is worth
+about <em>n</em>×. Qubit reordering is omitted — <code>ExaqtReorderQubitsPass</code> scores the
+CPU's per-slot SIMD kernels, which say nothing about cuStateVec. <code>EXAQT_FUSE</code>,
+<code>EXAQT_FUSE_THRESHOLD</code> and <code>EXAQT_FUSE_MAX_SUPPORT</code> are honoured as on the CPU.</p>
+<p><strong>Errors.</strong> Failures that come from the shared core (a bad qubit index, a
+malformed gate matrix) raise the same exceptions as the CPU backend, so
+<code>except</code> clauses stay backend-agnostic. Two are GPU-specific: <code>CudaError</code>
+(a CUDA or cuStateVec call returned a non-success status) and
+<code>CudaUnavailableError</code> (the extension carries the feature but was built
+without a CUDA runtime). Both derive from <code>ExaqtError</code>. A state too wide
+for the card raises plain <code>MemoryError</code> — the same exception the CPU
+backend raises for a host allocation it cannot make, so one <code>except</code>
+covers both.</p>
+<hr />
+<h2 id="composite-state-exaqtstate">Composite state — <code>ExaqtState</code><a class="headerlink" href="#composite-state-exaqtstate" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="exaqt.ExaqtState" class="doc doc-heading">
+            <code>exaqt.ExaqtState</code>
+
+
+<a href="#exaqt.ExaqtState" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="mimiqcircuits.backends.State">State</span></code></p>
+
+
+
+        <p>Composite simulation state.</p>
+<p>Use one of the staticmethod factories — :meth:<code>zero</code>,
+:meth:<code>one</code>, :meth:<code>product</code> — to construct a state, then pass it
+to :func:<code>exaqt.evolve</code> or :func:<code>exaqt.apply_instruction</code>.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="exaqt.ExaqtState.q">q</span></code></td>
+            <td>
+                  <code><span title="exaqt._core.ExaqtSV">ExaqtSV</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>the dense quantum register.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="exaqt.ExaqtState.c">c</span></code></td>
+            <td>
+                  <code><span title="list">list</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>classical-bit register, length <code>num_bits</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="exaqt.ExaqtState.z">z</span></code></td>
+            <td>
+                  <code><span title="list">list</span>[<span title="complex">complex</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>complex z-variable register, length
+<code>num_zvars</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtState.zero" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">zero</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span> <span class="n">num_bits</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_zvars</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dynamic_qubits</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+<a href="#exaqt.ExaqtState.zero" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p><code>|0…0⟩</code> quantum state, classical/z registers initialised to 0.</p>
+<p><code>dynamic_qubits=True</code> enables dynamic qubit allocation — see
+:class:<code>~exaqt.ExaqtQCS</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtState.one" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">one</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span> <span class="n">num_bits</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_zvars</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dynamic_qubits</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+<a href="#exaqt.ExaqtState.one" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p><code>|1…1⟩</code> quantum state, classical/z registers initialised to 1.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtState.product" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">product</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">num_bits</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_zvars</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dynamic_qubits</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+<a href="#exaqt.ExaqtState.product" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Product state from a 0/1 bitstring (qubit 0 = LSB).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtState.amplitude" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">amplitude</span><span class="p">(</span><span class="n">bitstring</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtState.amplitude" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get the amplitude for a given computational basis state.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtState.sample" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">sample</span><span class="p">(</span><span class="n">nsamples</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtState.sample" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Sample measurement outcomes from the quantum state.</p>
+<p>Either <code>rng</code> (a :class:<code>random.Random</code>) or <code>seed</code> (an
+<code>int</code>) may be passed, but not both. The Rust <code>Rng</code> is
+constructed from a 63-bit derived seed when <code>rng</code> is given.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtState.reset" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">reset</span><span class="p">()</span></code>
+
+<a href="#exaqt.ExaqtState.reset" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Reset all four registers to their zero state in place.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><hr />
+<h2 id="per-instruction-primitives">Per-instruction primitives<a class="headerlink" href="#per-instruction-primitives" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="exaqt.evolve" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">exaqt</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">circuit</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#exaqt.evolve" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Evolve <code>state</code> through every instruction in <code>circuit</code> in place.</p>
+<p>Returns <code>(state, fidelity)</code>. Fidelity is always 1.0 for the
+state-vector simulator.</p>
+<p><code>callback</code>, when given, is called as <code>callback(i, total)</code> after
+each applied instruction — the <code>execute</code> driver turns this into the
+per-step execution bar.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="exaqt.apply_instruction" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">exaqt</span><span class="o">.</span><span class="n">apply_instruction</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">inst</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#exaqt.apply_instruction" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Apply a single circuit instruction to <code>state</code> in place.</p>
+<p>Returns fidelity (1.0 — Exaqt is a noiseless simulator).
+Raises :class:<code>NotImplementedError</code> for operations the rust core does
+not support yet (Kraus channels, BondDim, SchmidtRank).</p>
+
+
+    </div>
+
+</div><hr />
+<h2 id="compilation-passes">Compilation passes<a class="headerlink" href="#compilation-passes" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="exaqt.ExaqtFlattenContainersPass" class="doc doc-heading">
+            <code>exaqt.ExaqtFlattenContainersPass</code>
+
+
+<a href="#exaqt.ExaqtFlattenContainersPass" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="mimiqcircuits.backends.AbstractPass">AbstractPass</span></code></p>
+
+
+
+        <p>Expand container operations into the instructions they hold.</p>
+<p>A container — a <code>GateDecl</code> call (what <code>push_suzukitrotter</code> /
+<code>push_lietrotter</code> and the UCCSD builders emit), a <code>Block</code>, a
+<code>Repeat</code> / <code>Parallel</code> replicator, a <code>PauliString</code>, or any
+<code>Control</code> / <code>Inverse</code> / <code>Power</code> wrapped around one — stands for a
+sub-circuit, not for a matrix. :func:<code>exaqt.execute.apply_instruction</code>
+can expand one at apply time, and that is enough to get the right
+answer — a container reports its own arity and unitarity honestly, so
+the sampling-versus-trajectory analysis classifies it correctly without
+looking inside.</p>
+<p>What apply-time expansion is too late for is the optimisation passes.
+:class:<code>mimiqcircuits.FusePass</code> and :class:<code>ExaqtReorderQubitsPass</code> see
+one opaque wide operation and have nothing to work with, so a circuit
+built entirely out of Trotter steps runs neither fused nor reordered.
+Running this pass first gives them the real gates.</p>
+<p>Qubit indices are unchanged (the rewrite happens in the parent's index
+space), so the pass returns no permutation, and a circuit that holds no
+container is returned untouched.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtFlattenContainersPass.spec" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">spec</span><span class="p">()</span></code>
+
+<a href="#exaqt.ExaqtFlattenContainersPass.spec" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Identify this pass. It takes no parameters.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtFlattenContainersPass.preserves" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">preserves</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtFlattenContainersPass.preserves" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Always <code>True</code>: expanding a container adds no qubit and
+relabels none.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtFlattenContainersPass.apply" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">apply</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">circuit</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtFlattenContainersPass.apply" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Expand every container in <code>circuit</code>, recursively.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="exaqt.ExaqtReorderQubitsPass" class="doc doc-heading">
+            <code>exaqt.ExaqtReorderQubitsPass</code>
+
+
+<a href="#exaqt.ExaqtReorderQubitsPass" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="mimiqcircuits.backends.AbstractPass">AbstractPass</span></code></p>
+
+
+
+        <p>Reorder qubits to land gates on the fastest kernels.</p>
+<p>Uses the native <code>optimize_ordering</code> to minimise the estimated
+runtime <code>Σ weight · kernel_cost(slot)</code> over qubit permutations,
+where <code>kernel_cost</code> captures the two-qubit SIMD threshold (lower
+index &gt;= 2) and the slower 1-qubit slots 0/1/2.</p>
+<h5 id="exaqt.ExaqtReorderQubitsPass--parameters">Parameters<a class="headerlink" href="#exaqt.ExaqtReorderQubitsPass--parameters" title="Permanent link">&para;</a></h5>
+<p>method:
+    <code>"greedy"</code> (default, deterministic) or <code>"sa"</code> /
+    <code>"simulated_annealing"</code>. <code>True</code> is a back-compat shorthand
+    for <code>"greedy"</code>.
+seed:
+    Seed for <code>"sa"</code>. <code>None</code> draws one from the pass-context RNG.
+qubit_threshold:
+    Minimum qubit count for the pass to act; smaller circuits pass
+    through unchanged. <code>0</code> (the default) always reorders — the
+    gate is meant for the default pipeline, which sets it so
+    reordering only kicks in once the state vector outgrows the
+    cache.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtReorderQubitsPass.spec" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">spec</span><span class="p">()</span></code>
+
+<a href="#exaqt.ExaqtReorderQubitsPass.spec" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Identify this pass and its <code>method</code> / optional <code>seed</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtReorderQubitsPass.preserves" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">preserves</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtReorderQubitsPass.preserves" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Always <code>True</code>: relabelling preserves every circuit feature;
+the pipeline maps the output cstate back to the user's frame.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="exaqt.ExaqtReorderQubitsPass.apply" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">apply</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">circuit</span><span class="p">)</span></code>
+
+<a href="#exaqt.ExaqtReorderQubitsPass.apply" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Run the optimiser and return the rewritten circuit plus the
+permutation it chose (<code>None</code> if it left the circuit unchanged).</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><hr />
+<h2 id="random-number-generator-rng">Random number generator — <code>Rng</code><a class="headerlink" href="#random-number-generator-rng" title="Permanent link">&para;</a></h2>
+<p><code>Rng(seed)</code> is a seeded PRNG handle used by every measurement, sampling,
+and noise-channel method. The same seed reproduces the same Xoshiro256++
+stream across the Rust core and the Python and Julia wrappers.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">exaqt</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rng</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">rng</span> <span class="o">=</span> <span class="n">Rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="package-metadata">Package metadata<a class="headerlink" href="#package-metadata" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>exaqt.__version__</code></td>
+<td><code>str</code> — installed version of the <code>mimiq-exaqt</code> distribution</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="exaqt.docs_dir" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">exaqt</span><span class="o">.</span><span class="n">docs_dir</span><span class="p">()</span></code>
+
+<a href="#exaqt.docs_dir" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Path to the HTML documentation bundled with the package.</p>
+<p>Returns the directory holding the built documentation site
+(<code>index.html</code> and assets) that ships inside the wheel. Open it with
+the <code>exaqt docs</code> console command. The directory is absent in builds
+made without the documentation site, in which case the online copy at
+https://docs.qperfect.io/exaqt-python/ applies.</p>
+
+
+    </div>
+
+</div><hr />
+<h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
+<p>All exceptions subclass <code>ExaqtError</code> (itself a <code>RuntimeError</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Exception</th>
+<th>Raised when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GateShapeError</code></td>
+<td>a gate matrix has the wrong shape or layout</td>
+</tr>
+<tr>
+<td><code>QubitIndexError</code></td>
+<td>a qubit index is out of bounds, or duplicated</td>
+</tr>
+<tr>
+<td><code>DegenerateStateError</code></td>
+<td>sampling a state with zero / non-finite norm</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025&ndash;2026 QPerfect. All rights reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.tracking", "navigation.top", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
